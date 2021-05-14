@@ -1,4 +1,5 @@
 # fast-folder-sync
+
 Sync a folder to an other based on filename (path) and size difference
 
 ## Requirements
@@ -7,4 +8,12 @@ Sync a folder to an other based on filename (path) and size difference
 
 ## Run
 
+```scala
 amm Sync.sc sync ./source ./destination
+```
+
+## Test / dev
+
+```scala
+amm -w Sync.sc runTest
+```
