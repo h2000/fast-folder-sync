@@ -41,8 +41,8 @@ def prepareTestData(src: Path, dest: Path): Unit = {
 @main
 def runTest(): Unit = {
   val wd = os.temp.dir(deleteOnExit = true)
-  val src = wd / "dir1"
-  val dest = wd / "dir2"
+  val src = wd / "src"
+  val dest = wd / "dest"
   prepareTestData(src, dest)
 
   def dumpDir(dirPath: Path) =
@@ -58,7 +58,7 @@ def runTest(): Unit = {
   sync(src, dest)
   println("-- after")
   dumpDir(wd)
-  val s = files(src)
-  val d = files(src)
-
+  val s = files(src).toList.sortBy(_._1.toString())
+  val d = files(dest).toList.sortBy(_._1.toString())
+  assert(s.equals(d), "content of folders [src] and [dest] are not equal")
 }
